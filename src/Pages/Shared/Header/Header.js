@@ -4,15 +4,15 @@ import { FaGoogle, FaGithub } from "react-icons/fa";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
 import LeftSideNav from "../LeftSideNav/LeftSideNav";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
     <div>
       <Navbar
         collapseOnSelect
-        className="mb-5"
+        className="mb-3"
         expand="lg"
         bg="light"
         variant="light"
@@ -26,7 +26,7 @@ const Header = () => {
             <Nav className="me-auto">
               <Nav.Link href="#features">Courses</Nav.Link>
               <Nav.Link href="#pricing">FAQ</Nav.Link>
-              <Nav.Link href="#pricing">Blog</Nav.Link>
+              <Link to="/blog">Blog</Link>
               <Button variant="outline-success" size="sm">
                 <FaGoogle></FaGoogle> Login via Google
               </Button>
