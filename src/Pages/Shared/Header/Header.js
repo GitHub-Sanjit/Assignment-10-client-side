@@ -18,13 +18,15 @@ const Header = () => {
         variant="light"
       >
         <Container>
-          <Navbar.Brand href="#home">
-            <h2>Online-Mentor</h2>
+          <Navbar.Brand>
+            <Link to="/">
+              <h2>Online-Mentor</h2>
+            </Link>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#features">Courses</Nav.Link>
+              <Link to="/">Courses</Link>
               <Nav.Link href="#pricing">FAQ</Nav.Link>
               <Link to="/blog">Blog</Link>
               <Button variant="outline-success" size="sm">
