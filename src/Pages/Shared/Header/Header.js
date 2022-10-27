@@ -8,9 +8,38 @@ import LeftSideNav from "../LeftSideNav/LeftSideNav";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
+import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
+import { Image } from "react-bootstrap";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Header = () => {
-  const { user } = useContext(AuthContext);
+  const { user, providerLogin } = useContext(AuthContext);
+
+  const googleProvider = new GoogleAuthProvider();
+  const gitHubProvider = new GithubAuthProvider();
+
+  const showUserNameAsAToast = () => {
+    return toast(user?.displayName);
+  };
+
+  const handleGoogleSignIn = () => {
+    providerLogin(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => console.error(error));
+  };
+
+  const handleGithubSignIn = () => {
+    providerLogin(gitHubProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => console.error(error));
+  };
 
   return (
     <div>
@@ -33,15 +62,29 @@ const Header = () => {
               <Link to="/">Courses</Link>
               <Nav.Link href="#pricing">FAQ</Nav.Link>
               <Link to="/blog">Blog</Link>
-              <Button variant="outline-success" size="sm">
+              <Button
+                onClick={handleGoogleSignIn}
+                variant="outline-success"
+                size="sm"
+              >
                 <FaGoogle></FaGoogle> Login via Google
               </Button>
-              <Button variant="outline-success" size="sm">
+              <Button
+                onClick={handleGithubSignIn}
+                variant="outline-success"
+                size="sm"
+              >
                 <FaGithub></FaGithub> Login via GitHub
               </Button>
             </Nav>
             <Nav>
-              <Nav.Link href="#deets">{user?.displayName}</Nav.Link>
+              <Image
+                onMouseEnter={showUserNameAsAToast}
+                style={{ height: "40px" }}
+                roundedCircle
+                src={user?.photoURL}
+              ></Image>
+              <ToastContainer />
               <Nav.Link eventKey={2} href="#memes">
                 Dank memes
               </Nav.Link>
