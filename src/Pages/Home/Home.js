@@ -25,7 +25,7 @@ const Home = () => {
                   course.description
                 )}
               </Card.Text>
-              <Button variant="primary">Go somewhere</Button>
+              {/* <Button variant="primary">Go somewhere</Button> */}
             </Card.Body>
           </Card>
         ))}

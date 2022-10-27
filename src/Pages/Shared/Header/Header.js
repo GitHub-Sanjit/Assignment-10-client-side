@@ -6,8 +6,12 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import LeftSideNav from "../LeftSideNav/LeftSideNav";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
 
 const Header = () => {
+  const { user } = useContext(AuthContext);
+
   return (
     <div>
       <Navbar
@@ -37,7 +41,7 @@ const Header = () => {
               </Button>
             </Nav>
             <Nav>
-              <Nav.Link href="#deets">More deets</Nav.Link>
+              <Nav.Link href="#deets">{user?.displayName}</Nav.Link>
               <Nav.Link eventKey={2} href="#memes">
                 Dank memes
               </Nav.Link>
