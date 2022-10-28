@@ -3,8 +3,9 @@ import Main from "../../layout/Main";
 import Blog from "../../Pages/Blog/Blog";
 import CheckOutPage from "../../Pages/CheckOutPage/CheckOutPage";
 import CourseDetails from "../../Pages/CourseDetails/CourseDetails";
-import Courses from "../../Pages/Courses/Courses/Courses";
 import Home from "../../Pages/Home/Home";
+import Login from "../../Pages/Login/Login/Login";
+import Register from "../../Pages/Login/Register/Register";
 import NotFoundPage from "../../Pages/NotFoundPage/NotFoundPage";
 
 export const routes = createBrowserRouter([
@@ -26,6 +27,14 @@ export const routes = createBrowserRouter([
       {
         path: "/checkOut",
         element: <CheckOutPage></CheckOutPage>,
+      },
+      {
+        path: "/login",
+        element: <Login></Login>,
+      },
+      {
+        path: "/register",
+        element: <Register></Register>,
       },
     ],
   },

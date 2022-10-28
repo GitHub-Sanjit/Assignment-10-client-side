@@ -14,7 +14,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Header = () => {
-  const { user, providerLogin } = useContext(AuthContext);
+  const { user, providerLogin, logOut } = useContext(AuthContext);
 
   const googleProvider = new GoogleAuthProvider();
   const gitHubProvider = new GithubAuthProvider();
@@ -38,6 +38,12 @@ const Header = () => {
         const user = result.user;
         console.log(user);
       })
+      .catch((error) => console.error(error));
+  };
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
       .catch((error) => console.error(error));
   };
 
@@ -78,13 +84,26 @@ const Header = () => {
               </Button>
             </Nav>
             <Nav>
-              <Image
-                onMouseEnter={showUserNameAsAToast}
-                style={{ height: "40px" }}
-                roundedCircle
-                src={user?.photoURL}
-              ></Image>
-              <ToastContainer />
+              {user?.uid ? (
+                <>
+                  <Image
+                    onMouseEnter={showUserNameAsAToast}
+                    style={{ height: "40px" }}
+                    roundedCircle
+                    src={user?.photoURL}
+                  ></Image>
+                  <ToastContainer />
+                  <Button variant="light" onClick={handleLogOut}>
+                    Log Out
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <Link to="/login">Login</Link>
+                  <Link to="/register">Register</Link>
+                </>
+              )}
+
               <Nav.Link eventKey={2} href="#memes">
                 Dank memes
               </Nav.Link>
