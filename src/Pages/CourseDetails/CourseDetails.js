@@ -8,10 +8,11 @@ const ref = React.createRef();
 
 const CourseDetails = () => {
   const course = useLoaderData();
-  // console.log(course);
+
   return (
     <div>
       <div>
+        {/* pdf button */}
         <Pdf targetRef={ref} filename={`${course.name}.pdf`}>
           {({ toPdf }) => <button onClick={toPdf}>Generate Pdf</button>}
         </Pdf>
