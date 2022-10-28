@@ -7,6 +7,7 @@ import Home from "../../Pages/Home/Home";
 import Login from "../../Pages/Login/Login/Login";
 import Register from "../../Pages/Login/Register/Register";
 import NotFoundPage from "../../Pages/NotFoundPage/NotFoundPage";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const routes = createBrowserRouter([
   {
@@ -26,7 +27,11 @@ export const routes = createBrowserRouter([
       },
       {
         path: "/checkOut",
-        element: <CheckOutPage></CheckOutPage>,
+        element: (
+          <PrivateRoute>
+            <CheckOutPage></CheckOutPage>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/login",
