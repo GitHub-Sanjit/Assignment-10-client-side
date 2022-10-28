@@ -53,7 +53,7 @@ const Header = () => {
         collapseOnSelect
         className="mb-3"
         expand="lg"
-        bg="light"
+        bg="dark"
         variant="light"
       >
         <Container>

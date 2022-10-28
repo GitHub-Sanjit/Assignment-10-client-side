@@ -1,8 +1,7 @@
 import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
-import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import './Home.css';
+import "./Home.css";
 
 const Home = () => {
   const courses = useLoaderData();
@@ -17,15 +16,14 @@ const Home = () => {
               <Card.Title>{course.name}</Card.Title>
               <Card.Text>
                 {course.description.length > 150 ? (
-                  <p>
+                  <>
                     {course.description.slice(0, 150) + "..."}
                     <Link to={`/course/${course.id}`}>Read More</Link>
-                  </p>
+                  </>
                 ) : (
                   course.description
                 )}
               </Card.Text>
-              {/* <Button variant="primary">Go somewhere</Button> */}
             </Card.Body>
           </Card>
         ))}

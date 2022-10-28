@@ -5,7 +5,7 @@ import Card from "react-bootstrap/Card";
 
 const CourseDetails = () => {
   const course = useLoaderData();
-  console.log(course);
+  // console.log(course);
   return (
     <div>
       <h2>This is Course Details page</h2>
@@ -15,13 +15,19 @@ const CourseDetails = () => {
           <Card.Title>
             <h4>{course.name}</h4>
           </Card.Title>
-          <p>
+          <>
             <h5>Created By : {course.author}</h5>
-          </p>
-          <p>Price: $ {course.price}</p>
-          <Card.Text>{course.description}</Card.Text>
+          </>
+          <h6>Price: $ {course.price}</h6>
+          <Card.Text>
+            <u>Course Description</u> : {course.description}
+          </Card.Text>
+          <Card.Text>
+            <u>Course Feature</u> : {course.course_feature}
+          </Card.Text>
+
           <Button variant="outline-secondary">
-            <Link to="/checkOut">Get Premium Access</Link>
+            <Link to={`/checkOut/${course.id}`}>Get Premium Access</Link>
           </Button>
         </Card.Body>
       </Card>
