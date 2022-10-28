@@ -2,16 +2,23 @@ import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import Pdf from "react-to-pdf";
+
+const ref = React.createRef();
 
 const CourseDetails = () => {
   const course = useLoaderData();
   // console.log(course);
   return (
     <div>
-      <h2>This is Course Details page</h2>
+      <div>
+        <Pdf targetRef={ref} filename={`${course.name}.pdf`}>
+          {({ toPdf }) => <button onClick={toPdf}>Generate Pdf</button>}
+        </Pdf>
+      </div>
       <Card>
         <Card.Img variant="top" src={course.img} />
-        <Card.Body>
+        <Card.Body ref={ref}>
           <Card.Title>
             <h4>{course.name}</h4>
           </Card.Title>
