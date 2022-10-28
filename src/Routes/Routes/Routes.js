@@ -17,18 +17,25 @@ export const routes = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("http://localhost:5000/courses"),
+        loader: () =>
+          fetch(
+            "https://b610-lerning-platform-server-side-mu.vercel.app/courses"
+          ),
       },
       {
         path: "/course/:id",
         element: <CourseDetails></CourseDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/course/${params.id}`),
+          fetch(
+            `https://b610-lerning-platform-server-side-mu.vercel.app/course/${params.id}`
+          ),
       },
       {
         path: "/checkOut/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/course/${params.id}`),
+          fetch(
+            `https://b610-lerning-platform-server-side-mu.vercel.app/course/${params.id}`
+          ),
         element: (
           <PrivateRoute>
             <CheckOutPage></CheckOutPage>

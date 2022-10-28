@@ -1,0 +1,7 @@
+.course-link a {
+  text-decoration: none;
+}
+
+.course-link a:hover {
+  color: blue;
+}

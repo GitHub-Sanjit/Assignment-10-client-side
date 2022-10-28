@@ -7,7 +7,6 @@ const Home = () => {
   const courses = useLoaderData();
   return (
     <div>
-      <h2>The Number of Courses : {courses.length}</h2>
       <div className="Card-container">
         {courses.map((course) => (
           <Card key={course.id} style={{ width: "" }}>
